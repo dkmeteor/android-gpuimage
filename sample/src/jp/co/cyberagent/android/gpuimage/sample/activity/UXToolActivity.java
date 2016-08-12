@@ -20,7 +20,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.View;
 
 import jp.co.cyberagent.android.gpuimage.GPUImageBrightnessFilter;
 import jp.co.cyberagent.android.gpuimage.GPUImageContrastFilter;
@@ -100,9 +99,6 @@ public class UXToolActivity extends Activity {
             mFilter = filter;
             mGPUImageView.setFilter(mFilter);
             mFilterAdjuster = new FilterAdjuster(mFilter);
-
-            findViewById(R.id.seekBar).setVisibility(
-                    mFilterAdjuster.canAdjust() ? View.VISIBLE : View.GONE);
         }
     }
 
