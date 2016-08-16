@@ -1,16 +1,21 @@
 package in.huohua.sample.uxtool;
 
+import android.app.Dialog;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Intent;
 import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.SeekBar;
+import android.widget.Toast;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import jp.co.cyberagent.android.gpuimage.GPUImage;
 import jp.co.cyberagent.android.gpuimage.GPUImageBrightnessFilter;
 import jp.co.cyberagent.android.gpuimage.GPUImageContrastFilter;
 import jp.co.cyberagent.android.gpuimage.GPUImageExposureFilter;
@@ -44,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
     @Bind(R.id.seek_exposure)
     SeekBar seekExposure;
 
+    ClipboardManager myClipboard;
 
     @Override
     public void onCreate(final Bundle savedInstanceState) {
@@ -62,6 +68,34 @@ public class MainActivity extends AppCompatActivity {
         });
         initFilters();
         initSeekBars();
+
+
+        myClipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        String message = "brightness: " + calculateBrightNess(seekBrightness.getProgress()) + "\n" +
+                "saturation: " + calculateSaturation(seekSaturation.getProgress()) + "\n" +
+                "contrast: " + calculateContrast(seekContrast.getProgress()) + "\n" +
+                "hue: " + calculateHue(seekHue.getProgress()) + "\n" +
+                "exposure: " + calculateExposure(seekExposure.getProgress());
+
+        Dialog dialog = new AlertDialog.Builder(this).setMessage(message).create();
+        dialog.show();
+
+        ClipData myClip;
+        myClip = ClipData.newPlainText("text", message);
+        myClipboard.setPrimaryClip(myClip);
+
+        Toast.makeText(this, "以上内容已复制到剪贴板", Toast.LENGTH_SHORT).show();
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        menu.add("Show Detail");
+        return super.onCreateOptionsMenu(menu);
     }
 
     private void initSeekBars() {
@@ -87,8 +121,8 @@ public class MainActivity extends AppCompatActivity {
         brightnessFilter = new GPUImageBrightnessFilter();
         saturationFilter = new GPUImageSaturationFilter();
         contrastFilter = new GPUImageContrastFilter();
-        hueFilter = new GPUImageHueFilter(0);
-        exposureFilter = new GPUImageExposureFilter();
+        hueFilter = new GPUImageHueFilter(0f);
+        exposureFilter = new GPUImageExposureFilter(0f);
 
         group = new GPUImageFilterGroup();
         group.addFilter(brightnessFilter);
