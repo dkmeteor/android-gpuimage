@@ -1,0 +1,126 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <jp.co.cyberagent.android.gpuimage.GPUImageView
+        android:id="@+id/gpuimage"
+        android:layout_width="wrap_content"
+        android:layout_height="300dp" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:paddingLeft="12dp"
+                android:text="brightness" />
+
+            <SeekBar
+                android:id="@+id/seek_brightness"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:max="1000" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:paddingLeft="12dp"
+                android:text="saturation" />
+
+            <SeekBar
+                android:id="@+id/seek_saturation"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:max="1000" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:paddingLeft="12dp"
+                android:text="contrast" />
+
+            <SeekBar
+                android:id="@+id/seek_contrast"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:max="1000" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:paddingLeft="12dp"
+                android:text="hue" />
+
+            <SeekBar
+                android:id="@+id/seek_hue"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:max="1000" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:paddingLeft="12dp"
+                android:text="exposure" />
+
+            <SeekBar
+                android:id="@+id/seek_exposure"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:max="1000" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>
