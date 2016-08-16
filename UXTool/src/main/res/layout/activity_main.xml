@@ -4,10 +4,16 @@
     android:orientation="vertical">
 
 
-    <jp.co.cyberagent.android.gpuimage.GPUImageView
-        android:id="@+id/gpuimage"
+    <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="300dp" />
+        android:layout_height="300dp">
+
+        <jp.co.cyberagent.android.gpuimage.GPUImageView
+            android:id="@+id/gpuimage"
+            android:layout_width="wrap_content"
+            android:layout_height="300dp" />
+
+    </RelativeLayout>
 
 
     <LinearLayout

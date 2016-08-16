@@ -69,8 +69,11 @@ public class MainActivity extends AppCompatActivity {
         initFilters();
         initSeekBars();
 
-
         myClipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+
+        Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
+        photoPickerIntent.setType("image/*");
+        startActivityForResult(photoPickerIntent, REQUEST_PICK_IMAGE);
     }
 
     @Override
